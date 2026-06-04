@@ -10,70 +10,73 @@
 
 ### Step 1: 项目初始化 ✅
 - [x] 创建 Vite + React + TypeScript 项目
-- [x] 安装所有依赖
+- [x] 安装所有依赖（Zustand, Framer Motion, Howler.js, react-webcam, @mediapipe/tasks-vision）
 - [x] 创建文档体系（docs/）
 - [x] 创建 CLAUDE.md 工作指引
-- [x] 配置 Tailwind CSS
-- [x] 配置 Vite（路径别名等）
+- [x] 配置 Tailwind CSS 4 + @tailwindcss/vite
+- [x] 配置 Vite（路径别名 @/）
+- [x] 配置全局暗黑主题样式（CSS 变量 + 自定义类）
 - [x] 初始化 Git 仓库
-- [ ] 验证项目能正常启动
+- [x] 验证项目编译通过
 
-### Step 2: 基础 UI 框架
-- [ ] 配置 Tailwind 主题色（CSS 变量）
-- [ ] 全局样式（背景、字体、滚动条）
-- [ ] MysticBackground 粒子背景组件
-- [ ] 通用 Layout 组件
-- [ ] 页面过渡动画组件
+### Step 2: 塔罗牌数据准备 ✅
+- [x] 编写 TarotCard 等类型定义 (src/types/index.ts)
+- [x] 整理 78 张牌的中文数据（22 大阿尔卡纳 + 56 小阿尔卡纳）
+- [x] 图片来源：Rider-Waite-Smith 公共领域图片（Wikimedia）
+- [x] 编写卡牌工具函数（洗牌、逆位随机、牌阵位置分配）
+- [x] 编写 localStorage 存储工具
 
-### Step 3: 塔罗牌数据准备
-- [ ] 编写 TarotCard 类型定义
-- [ ] 整理 78 张牌的中文数据（名称、关键词、正逆位含义）
-- [ ] 确定图片来源方案
-- [ ] 编写卡牌工具函数（洗牌、逆位随机、牌阵分配）
+### Step 3: 状态管理与 UI 框架 ✅
+- [x] 创建 Zustand readingStore (src/store/readingStore.ts)
+- [x] 实现 MysticBackground Canvas 粒子背景（含六芒星装饰）
+- [x] 全局暗黑主题样式
+- [x] Landing 入口页（含摄像头权限请求）
 
-### Step 4: 状态管理
-- [ ] 创建 Zustand readingStore
-- [ ] 创建 localStorage 工具函数
-- [ ] 类型定义完善
+### Step 4: 手势识别模块 ✅
+- [x] WebcamFeed 摄像头组件（含手部骨架线绘制）
+- [x] MediaPipe Hands 集成（CDN 加载模型）
+- [x] 手势分类器 gestureDetector（滑动/握拳/指向/张掌）
+- [x] useGesture Hook（实时检测循环）
 
-### Step 5: 手势识别模块
-- [ ] WebcamFeed 摄像头组件
-- [ ] MediaPipe Hands 初始化
-- [ ] 手势分类器（gestureDetector.ts）
-- [ ] useGesture Hook
-- [ ] 手势调试 UI（骨架线渲染）
+### Step 5: 仪式流程页面 ✅
+- [x] QuestionInput 问题输入页
+- [x] SpreadSelector 牌阵选择页（4 种牌阵）
+- [x] PreparationPhase 准备阶段（呼吸光环动画）
+- [x] ShufflePhase 洗牌阶段（手势 + 鼠标）
+- [x] CutPhase 切牌阶段（自动演示）
+- [x] DrawPhase 抽牌阶段（扇形候选牌）
+- [x] RevealPhase 翻牌阶段（3D 翻转 + 粒子）
 
-### Step 6: 仪式流程 - 前半段
-- [ ] Landing 入口页
-- [ ] QuestionInput 问题输入页
-- [ ] SpreadSelector 牌阵选择页
-- [ ] PreparationPhase 准备阶段
+### Step 6: 解读与历史 ✅
+- [x] CardDisplay 牌面展示组件（可展开/收起）
+- [x] ReadingResult 解读结果页（完整牌阵解读）
+- [x] History 历史记录页（localStorage 管理）
 
-### Step 7: 仪式流程 - 后半段
-- [ ] ShufflePhase 洗牌阶段
-- [ ] CutPhase 切牌阶段
-- [ ] DrawPhase 抽牌阶段
-- [ ] RevealPhase 翻牌阶段
+### Step 7: 音频集成 ✅
+- [x] useAudio Hook (Howler.js)
+- [x] 背景音乐 + 音效接口
+- [ ] 准备真实音频资源文件
 
-### Step 8: 解读与历史
-- [ ] CardDisplay 牌面展示组件
-- [ ] ReadingResult 解读结果页
-- [ ] History 历史记录页
-- [ ] 牌阵布局组件
+### Step 8: 动效打磨 ✅
+- [x] 页面过渡动画（Framer Motion AnimatePresence）
+- [x] 卡片 3D 翻转动画
+- [x] 粒子特效（翻牌爆发、背景漂浮）
+- [x] 呼吸光环动画
+- [x] 手势骨架线渲染
 
-### Step 9: 音频集成
-- [ ] 收集免费音效资源
-- [ ] useAudio Hook
-- [ ] 各阶段音效触发
+### Step 9: 部署 🔄
+- [x] 安装 gh-pages
+- [x] 配置部署脚本
+- [ ] 创建 GitHub 仓库
+- [ ] 推送代码
+- [ ] 配置 GitHub Pages
+- [ ] 验证线上运行
 
-### Step 10: 动效打磨
-- [ ] 卡片翻牌 3D 动画
-- [ ] 粒子特效细节
-- [ ] 过渡动画优化
-- [ ] 手势交互反馈
+## 下一步计划
 
-### Step 11: 部署
-- [ ] 构建生产版本
-- [ ] 部署到 GitHub Pages
-- [ ] 测试摄像头 HTTPS 要求
-- [ ] 跨浏览器测试
+### v1.1 增强
+- 准备真实音频资源
+- 塔罗牌图片本地化
+- 移动端响应式适配
+- 代码分割优化
+- AI 解读集成（可选）
