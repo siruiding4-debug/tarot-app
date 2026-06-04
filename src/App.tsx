@@ -9,9 +9,12 @@ import ShufflePhase from '@/components/ritual/ShufflePhase'
 import CutPhase from '@/components/ritual/CutPhase'
 import DrawPhase from '@/components/ritual/DrawPhase'
 import RevealPhase from '@/components/ritual/RevealPhase'
+import ReadingResult from '@/components/ReadingResult'
+import History from '@/components/History'
 
 function App() {
   const phase = useReadingStore((s) => s.phase)
+  const setPhase = useReadingStore((s) => s.setPhase)
 
   const renderPhase = () => {
     switch (phase) {
@@ -32,13 +35,9 @@ function App() {
       case 'reveal':
         return <RevealPhase key="reveal" />
       case 'result':
-        // 将在 Step 6 中实现
-        return (
-          <div key="result" className="flex flex-col items-center justify-center">
-            <h2 className="font-mystic text-3xl text-glow-gold">解读结果</h2>
-            <p className="text-text-dim mt-4">即将在下一步实现...</p>
-          </div>
-        )
+        return <ReadingResult key="result" />
+      case 'history':
+        return <History key="history" />
       default:
         return <Landing key="landing" />
     }
@@ -47,9 +46,22 @@ function App() {
   return (
     <div className="relative w-full h-screen overflow-hidden bg-bg-deep">
       <MysticBackground />
+
+      {/* 主内容层 */}
       <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
         <AnimatePresence mode="wait">{renderPhase()}</AnimatePresence>
       </div>
+
+      {/* 历史记录入口按钮 (仅在Landing页面显示) */}
+      {phase === 'landing' && (
+        <button
+          onClick={() => setPhase('history')}
+          className="fixed bottom-6 left-6 z-20 text-text-dim text-xs
+                     hover:text-text-gold transition-colors"
+        >
+          📜 历史记录
+        </button>
+      )}
     </div>
   )
 }

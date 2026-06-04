@@ -20,6 +20,7 @@ export type Phase =
   | 'draw'
   | 'reveal'
   | 'result'
+  | 'history'
 
 /** 手势类型 */
 export type GestureType = 'none' | 'swipe' | 'fist' | 'point' | 'open-palm'
