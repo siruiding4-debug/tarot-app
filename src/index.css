@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* ===== 塔罗牌暗黑神秘主题 ===== */
+
+@theme {
+  --color-bg-deep: #0a0a0f;
+  --color-bg-purple: #120a1e;
+  --color-gold-dark: #c9a84c;
+  --color-violet: #7b4fa0;
+  --color-blue-deep: #1a3a5c;
+  --color-glow-gold: #f0d060;
+  --color-glow-purple: #a855f7;
+  --color-glow-blue: #6366f1;
+  --color-text-gold: #e8d5a3;
+  --color-text-gray: #c4c4c4;
+  --color-text-dim: #6b6b7b;
+}
+
+/* 全局样式 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: #0a0a0f;
+  color: #c4c4c4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 神秘标题字体 */
+.font-mystic {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+/* 发光文字 */
+.text-glow-gold {
+  color: #f0d060;
+  text-shadow: 0 0 10px rgba(240, 208, 96, 0.3), 0 0 30px rgba(240, 208, 96, 0.1);
+}
+
+.text-glow-purple {
+  color: #a855f7;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.3), 0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+/* 发光边框 */
+.border-glow {
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  box-shadow: 0 0 10px rgba(201, 168, 76, 0.1), inset 0 0 10px rgba(201, 168, 76, 0.05);
+}
+
+.border-glow:hover {
+  border-color: rgba(201, 168, 76, 0.6);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.2), inset 0 0 20px rgba(201, 168, 76, 0.1);
+}
+
+/* 毛玻璃效果 */
+.glass {
+  background: rgba(20, 15, 35, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(201, 168, 76, 0.3);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 168, 76, 0.5);
+}
+
+/* 金色分割线 */
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 168, 76, 0.4) 20%,
+    rgba(240, 208, 96, 0.6) 50%,
+    rgba(201, 168, 76, 0.4) 80%,
+    transparent 100%
+  );
+}
