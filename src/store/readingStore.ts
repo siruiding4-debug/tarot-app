@@ -9,7 +9,6 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
   spreadType: null,
   drawnCards: [],
   readingHistory: [],
-  isCameraReady: false,
   isAudioEnabled: false,
 
   // 设置阶段
@@ -58,9 +57,6 @@ export const useReadingStore = create<ReadingState>((set, get) => ({
       spreadType: null,
       drawnCards: [],
     }),
-
-  // 设置摄像头状态
-  setCameraReady: (ready: boolean) => set({ isCameraReady: ready }),
 
   // 切换音频
   toggleAudio: () => set((state) => ({ isAudioEnabled: !state.isAudioEnabled })),

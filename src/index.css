@@ -26,7 +26,6 @@
 html, body, #root {
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 body {
@@ -35,6 +34,8 @@ body {
   color: #c4c4c4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* 移动端防止意外缩放 */
+  touch-action: manipulation;
 }
 
 /* 神秘标题字体 */

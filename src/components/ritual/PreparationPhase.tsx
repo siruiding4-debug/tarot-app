@@ -7,7 +7,6 @@ export default function PreparationPhase() {
   const [countdown, setCountdown] = useState(5)
   const [breathPhase, setBreathPhase] = useState<'in' | 'hold' | 'out'>('in')
 
-  // 呼吸动画循环
   useEffect(() => {
     const cycle = setInterval(() => {
       setBreathPhase((prev) => {
@@ -19,7 +18,6 @@ export default function PreparationPhase() {
     return () => clearInterval(cycle)
   }, [])
 
-  // 倒计时
   useEffect(() => {
     if (countdown <= 0) {
       setPhase('shuffle')
@@ -37,50 +35,45 @@ export default function PreparationPhase() {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center px-6"
+      className="flex flex-col items-center justify-center px-4 py-8 w-full h-full overflow-y-auto"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
       {/* 呼吸光环 */}
-      <div className="relative mb-10 flex items-center justify-center">
-        {/* 外环 */}
+      <div className="relative mb-8 md:mb-10 flex items-center justify-center">
         <motion.div
-          className="absolute w-48 h-48 rounded-full border border-gold-dark/20"
+          className="absolute w-36 h-36 md:w-48 md:h-48 rounded-full border border-gold-dark/20"
           animate={{
             scale: breathPhase === 'in' ? 1.4 : breathPhase === 'out' ? 0.9 : 1.4,
             opacity: breathPhase === 'in' ? 0.3 : breathPhase === 'out' ? 0.05 : 0.3,
           }}
           transition={{ duration: 3, ease: 'easeInOut' }}
         />
-        {/* 中环 */}
         <motion.div
-          className="absolute w-32 h-32 rounded-full border border-gold-dark/30"
+          className="absolute w-24 h-24 md:w-32 md:h-32 rounded-full border border-gold-dark/30"
           animate={{
             scale: breathPhase === 'in' ? 1.3 : breathPhase === 'out' ? 0.9 : 1.3,
             opacity: breathPhase === 'in' ? 0.5 : breathPhase === 'out' ? 0.1 : 0.5,
           }}
           transition={{ duration: 3, ease: 'easeInOut' }}
         />
-        {/* 核心光点 */}
         <motion.div
-          className="w-16 h-16 rounded-full bg-glow-gold/20"
+          className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-glow-gold/20"
           animate={{
             scale: breathPhase === 'in' ? 1.5 : breathPhase === 'out' ? 0.8 : 1.5,
             opacity: breathPhase === 'in' ? 0.8 : breathPhase === 'out' ? 0.3 : 0.8,
           }}
           transition={{ duration: 3, ease: 'easeInOut' }}
         />
-        {/* 中心 */}
         <motion.div
-          className="absolute w-4 h-4 rounded-full bg-glow-gold"
+          className="absolute w-3 h-3 md:w-4 md:h-4 rounded-full bg-glow-gold"
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 2, repeat: Infinity }}
         />
       </div>
 
-      {/* 引导文字 */}
       <motion.div
         className="text-center"
         key={breathPhase}
@@ -88,23 +81,21 @@ export default function PreparationPhase() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <p className="font-mystic text-xl text-glow-gold mb-2">
+        <p className="font-mystic text-lg md:text-xl text-glow-gold mb-2">
           {breathLabel[breathPhase]}
         </p>
-        <p className="text-text-dim text-sm">
+        <p className="text-text-dim text-xs md:text-sm">
           净化身心，建立与宇宙的连接
         </p>
       </motion.div>
 
-      {/* 倒计时 */}
-      <p className="text-text-dim text-xs mt-8">
+      <p className="text-text-dim text-xs mt-6 md:mt-8">
         {countdown > 0 ? `${countdown} 秒后进入洗牌...` : '即将进入洗牌...'}
       </p>
 
-      {/* 跳过按钮 */}
       <button
         onClick={() => setPhase('shuffle')}
-        className="mt-4 text-text-dim text-xs hover:text-text-gold transition-colors"
+        className="mt-4 text-text-dim text-xs hover:text-text-gold transition-colors min-h-[44px]"
       >
         跳过准备 →
       </button>

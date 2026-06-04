@@ -32,17 +32,16 @@ export default function History() {
 
   return (
     <motion.div
-      className="flex flex-col items-center w-full h-full overflow-y-auto py-8 px-6"
+      className="flex flex-col items-center w-full h-full overflow-y-auto py-6 md:py-8 px-3 md:px-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
       <div className="w-full max-w-lg">
-        {/* 标题栏 */}
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="font-mystic text-3xl text-glow-gold">历史记录</h2>
+        <div className="flex items-center justify-between mb-4 md:mb-6">
+          <h2 className="font-mystic text-2xl md:text-3xl text-glow-gold">历史记录</h2>
           <button
             onClick={() => setPhase('landing')}
-            className="text-text-dim text-sm hover:text-text-gold transition-colors"
+            className="text-text-dim text-xs md:text-sm hover:text-text-gold transition-colors"
           >
             ← 返回
           </button>
@@ -50,28 +49,28 @@ export default function History() {
 
         {records.length === 0 ? (
           <motion.div
-            className="text-center py-16"
+            className="text-center py-12 md:py-16"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <span className="text-6xl mb-4 block">🔮</span>
-            <p className="text-text-dim">还没有任何记录</p>
-            <p className="text-text-dim text-xs mt-2">进行第一次抽牌后，记录将在此显示</p>
+            <span className="text-5xl md:text-6xl mb-3 md:mb-4 block">🔮</span>
+            <p className="text-text-dim text-sm">还没有任何记录</p>
+            <p className="text-text-dim text-xs mt-1 md:mt-2">进行第一次抽牌后，记录将在此显示</p>
             <button
               onClick={() => {
                 useReadingStore.getState().resetReading()
                 setPhase('landing')
               }}
-              className="mt-6 px-6 py-2 border-glow rounded-xl text-text-gold
-                         font-mystic bg-bg-card hover:bg-opacity-80 transition-all"
+              className="mt-5 md:mt-6 px-5 py-2.5 md:px-6 md:py-2 border-glow rounded-xl
+                         text-text-gold font-mystic bg-bg-card hover:bg-opacity-80
+                         transition-all min-h-[44px]"
             >
               开始抽牌
             </button>
           </motion.div>
         ) : (
           <>
-            {/* 清空按钮 */}
-            <div className="text-right mb-4">
+            <div className="text-right mb-3 md:mb-4">
               <button
                 onClick={handleClearAll}
                 className="text-text-dim text-xs hover:text-red-400 transition-colors"
@@ -80,24 +79,23 @@ export default function History() {
               </button>
             </div>
 
-            {/* 记录列表 */}
-            <div className="space-y-3">
+            <div className="space-y-2 md:space-y-3">
               {records.map((record) => {
                 const spreadDef = getSpreadDefinition(record.spreadType)
                 return (
                   <motion.div
                     key={record.id}
-                    className="rounded-xl border border-gold-dark/20 bg-bg-card p-4
+                    className="rounded-xl border border-gold-dark/20 bg-bg-card p-3 md:p-4
                                hover:border-gold-dark/40 transition-all"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                   >
-                    <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-start justify-between mb-1 md:mb-2">
                       <div>
-                        <p className="text-text-gold text-sm font-mystic">
+                        <p className="text-text-gold text-xs md:text-sm font-mystic">
                           {spreadDef.name}
                         </p>
-                        <p className="text-text-dim text-xs">
+                        <p className="text-text-dim text-[10px] md:text-xs">
                           {formatDate(record.timestamp)}
                         </p>
                       </div>
@@ -108,15 +106,15 @@ export default function History() {
                         删除
                       </button>
                     </div>
-                    <p className="text-text-dim text-xs mb-2">
+                    <p className="text-text-dim text-[10px] md:text-xs mb-1 md:mb-2">
                       问题：{record.question}
                     </p>
                     <div className="flex flex-wrap gap-1">
                       {record.cards.map((dc) => (
                         <span
                           key={dc.position}
-                          className="text-xs px-2 py-0.5 rounded-full bg-gold-dark/10
-                                     text-gold-dark border border-gold-dark/20"
+                          className="text-[10px] md:text-xs px-1.5 py-0.5 rounded-full
+                                     bg-gold-dark/10 text-gold-dark border border-gold-dark/20"
                         >
                           {dc.positionName}: {dc.card.name}
                           {dc.orientation === 'reversed' ? ' ↕' : ''}
@@ -130,8 +128,7 @@ export default function History() {
           </>
         )}
 
-        {/* 底部提示 */}
-        <p className="text-text-dim text-xs text-center mt-8 opacity-50">
+        <p className="text-text-dim text-[10px] md:text-xs text-center mt-6 md:mt-8 opacity-50">
           记录保存在本地浏览器中，清除浏览器数据将丢失
         </p>
       </div>

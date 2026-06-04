@@ -38,9 +38,11 @@ export default function MysticBackground() {
     resize()
     window.addEventListener('resize', resize)
 
-    // 创建粒子
+    // 创建粒子（移动端减少数量）
     function createParticles() {
-      const count = Math.floor((canvas!.width * canvas!.height) / 8000)
+      const isMobile = window.innerWidth < 768
+      const divisor = isMobile ? 16000 : 8000
+      const count = Math.floor((canvas!.width * canvas!.height) / divisor)
       particles = Array.from({ length: count }, (): Particle => ({
         x: Math.random() * canvas!.width,
         y: Math.random() * canvas!.height,

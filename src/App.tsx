@@ -14,7 +14,6 @@ import History from '@/components/History'
 
 function App() {
   const phase = useReadingStore((s) => s.phase)
-  const setPhase = useReadingStore((s) => s.setPhase)
 
   const renderPhase = () => {
     switch (phase) {
@@ -44,24 +43,11 @@ function App() {
   }
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-bg-deep">
+    <div className="relative w-full min-h-screen bg-bg-deep">
       <MysticBackground />
-
-      {/* 主内容层 */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center">
+      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center">
         <AnimatePresence mode="wait">{renderPhase()}</AnimatePresence>
       </div>
-
-      {/* 历史记录入口按钮 (仅在Landing页面显示) */}
-      {phase === 'landing' && (
-        <button
-          onClick={() => setPhase('history')}
-          className="fixed bottom-6 left-6 z-20 text-text-dim text-xs
-                     hover:text-text-gold transition-colors"
-        >
-          📜 历史记录
-        </button>
-      )}
     </div>
   )
 }

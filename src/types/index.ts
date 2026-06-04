@@ -22,9 +22,6 @@ export type Phase =
   | 'result'
   | 'history'
 
-/** 手势类型 */
-export type GestureType = 'none' | 'swipe' | 'fist' | 'point' | 'open-palm'
-
 /** 牌的朝向 */
 export type Orientation = 'upright' | 'reversed'
 
@@ -71,23 +68,6 @@ export interface SpreadDefinition {
   positions: SpreadPosition[]
 }
 
-// ===== 手部关键点 =====
-
-/** MediaPipe 手部关键点 */
-export interface HandLandmark {
-  x: number
-  y: number
-  z: number
-}
-
-/** 手势检测结果 */
-export interface GestureResult {
-  type: GestureType
-  confidence: number
-  landmarks: HandLandmark[] | null
-  cursorPosition?: { x: number; y: number } // 食指指向的屏幕坐标
-}
-
 // ===== 历史记录 =====
 
 /** 单次抽牌记录 */
@@ -108,7 +88,6 @@ export interface ReadingState {
   spreadType: SpreadType | null
   drawnCards: DrawnCard[]
   readingHistory: ReadingRecord[]
-  isCameraReady: boolean
   isAudioEnabled: boolean
 
   // 操作
@@ -119,6 +98,5 @@ export interface ReadingState {
   revealCard: (position: number) => void
   saveReading: () => void
   resetReading: () => void
-  setCameraReady: (ready: boolean) => void
   toggleAudio: () => void
 }
